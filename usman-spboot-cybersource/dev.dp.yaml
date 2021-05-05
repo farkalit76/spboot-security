@@ -1,0 +1,28 @@
+application: UsmanWallets
+productOwner: farkalit.usman76@gmail.com
+productName: usmanservice
+developerGroup: US-Payment-Squad
+readerGroup: US-Payment-Squad
+region: westindia
+services:
+  - name: usmanwallets-service
+    config:
+      category: appservice
+      isDockerised: false
+      port: 8080
+      tiersize: P1v2
+      stack: JAVA|8-jre8
+      healthcheck: /health
+      serviceType: api
+      source: 'https://bitbucket.org/c4hybris/usman-wallets'
+      envVariables:
+          - name: JAVA_OPTS
+            value: '-javaagent:/local/site/wwwroot/applicationinsights-agent-2.6.1.jar'
+          - name: "USMAN_USERNAME"
+            value: "$$.USMAN-USERNAME"
+          - name: "USMAN_PASSWORD"
+            value: "$$.USMAN-PASSWORD"
+          - name: "USMAN_CREDENTIAL"
+            value: "$$.USMAN-CREDENTIAL"
+          - name: "USMAN_SECRET_KEY"
+            value: "$$.USMAN-SECRET-KEY"
